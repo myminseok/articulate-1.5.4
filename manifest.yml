@@ -3,10 +3,8 @@ applications:
 - name: articulate-mkim
   memory: 1G 
   instances: 1
-  host: articulate
+  routes: 
+  - route: articulate-mkim.apps.sec.mzdemo.net
   path: target/articulate-0.0.1-SNAPSHOT.jar
-  env:
-    JAVA_OPTS: -Djava.security.egd=file:///dev/urandom
-    JBP_CONFIG_JMX: '{enabled: true}'
-    JAVA_OPTS: "-XX:+UseConcMarkSweepGC"
-    TRUST_CERTS: api.system.brother3.mzdemo.net
+  services:
+    - pusan-mysql
